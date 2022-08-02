@@ -4,5 +4,5 @@ process.stdin.on('data', data => {
     const a = Number(n[0]), b = Number(n[1]);
     
     console.log("*".repeat(a));
-    console.log(("*".repeat(a)+"\n").repeat(b-1))
+    console.log((("*".repeat(a))+"\n").repeat(b-1).trim());
 });
