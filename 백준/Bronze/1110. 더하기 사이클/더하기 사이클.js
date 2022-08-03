@@ -1,11 +1,14 @@
-let input = require('fs').readFileSync('/dev/stdin').toString();
-let origin = Number(input);
+const input = require('fs').readFileSync('/dev/stdin').toString().trim();
+let original = Number(input);
+let change_num = 0;
 let count = 0;
 
 while (true) {
-    let sum = Math.floor(input / 10) + (input % 10);
-    input = (input % 10) * 10 + (sum % 10);
-    count++
-    if (origin === input) break;
+    count++;
+    change_num = Math.trunc(original / 10) + original % 10;
+    original = original % 10 * 10 + change_num % 10;
+    if (Number(input) === original) {
+        break;
+    }
 }
 console.log(count);
