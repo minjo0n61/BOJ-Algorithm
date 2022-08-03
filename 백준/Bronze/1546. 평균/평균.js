@@ -1,16 +1,10 @@
-const input = require('fs').readFileSync('/dev/stdin').toString().trim().split("\n");
-let subject_num = Number(input[0]);
-let subject_score = input[1].split(" ");
-const M = Math.max(...subject_score);
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
+let testcase = Number(input[0]);
+let score = input[1].split(" ").map(Number);
+let maxscore = Math.max(...score);
 let sum = 0;
 
-for (let i = 0; i < subject_num; i++) {
-    if (subject_num[i] !== M) {
-        sum += subject_score[i] / M * 100;
-    } else {
-        sum += M;
-    }
+for (let i = 0; i < testcase; i++) {
+    sum += score[i] / maxscore * 100;
 }
-
-
-console.log(sum / subject_num);
+console.log(sum / testcase);
