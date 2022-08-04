@@ -1,11 +1,8 @@
-function solution(n)
-{
-    let answer = 0;
-    let arr = n.toString();
+function solution(N) {
+    let strNum = N.toString();
     let sum =0;
-    for(let i = 0; i<arr.length; i++){
-        sum += Number(arr[i]);
+    for (let i =0; i<strNum.length; i++){
+        sum += +strNum[i];
     }
-
-    return answer=sum;
+    return sum;
 }
