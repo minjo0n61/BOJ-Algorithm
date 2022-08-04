@@ -1,9 +1,10 @@
-function solution(s) {
+function solution(s){
     let answer = true;
-    if(s.length !== 4 && s.length !==6){return false;}
-    
-    for (let i=0; i<s.length; i++){
-        if(isNaN(Number(s[i]))===true){return false}
-    }
+    let arr = s.toString().split("");
+    if(s.length===4 || s.length===6){
+        for(let i=0;i<arr.length;i++){
+            if(isNaN(Number(arr[i]))===true){return false;}
+        }
+    }else{return false;}
     return answer;
 }
