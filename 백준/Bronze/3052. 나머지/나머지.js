@@ -1,10 +1,10 @@
-const input = require('fs').readFileSync('/dev/stdin').toString().trim().split("\n");
-let arr = [];
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n').map(Number);
+let answer = [];
 
-input.forEach(element => {
-    let num = element % 42;
-    if (arr.indexOf(num) === -1) {
-        arr.push(num);
+for (let i = 0; i < input.length; i++) {
+    if (answer.includes(input[i] % 42) === false) {
+        answer.push(input[i] % 42);
     }
-});
-console.log(arr.length);
+
+}
+console.log(answer.length);
