@@ -1,13 +1,11 @@
 function solution(n, m) {
     var answer = [];
-    let arr = [];
-    for (let i = 1; i <= n; i++) {
-        if (n % i === 0 && m % i === 0) {
-            arr.push(i)
-        }
+    
+    function getGcd(a,b){
+       if(b===0) return a;
+        return getGcd(b,a%b);
     }
-    let cdgy = arr.pop();
-    let cdgb = n * m / cdgy;
-    answer.push(cdgy, cdgb)
+
+    answer.push(getGcd(n,m),n*m/getGcd(n,m))
     return answer;
 }
