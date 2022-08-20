@@ -1,8 +1,8 @@
 function solution(n) {
+    var answer = [];
     let strNum = n.toString();
-    let arr = [];
-    for (let i = strNum.length; i > 0; i--) {
-        arr.push(parseInt(strNum.substr((i - 1), 1)));
+    for(let i=strNum.length-1;i>=0;i--){
+        answer.push(Number(strNum[i]));
     }
-    return arr;
+    return answer;
 }
