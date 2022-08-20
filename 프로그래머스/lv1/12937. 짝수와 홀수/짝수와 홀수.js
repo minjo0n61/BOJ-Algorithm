@@ -1,3 +1,3 @@
 function solution(num) {
-    return num%2===0?"Even":"Odd";
+    return answer=num%2===0?"Even":"Odd";
 }
