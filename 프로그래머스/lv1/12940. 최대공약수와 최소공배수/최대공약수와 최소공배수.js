@@ -1,11 +1,8 @@
 function solution(n, m) {
     var answer = [];
-    
-    function getGcd(a,b){
-       if(b===0) return a;
-        return getGcd(b,a%b);
+    function gcd(a,b){
+        if(b===0){return a;}
+        return gcd(b,a%b);
     }
-
-    answer.push(getGcd(n,m),n*m/getGcd(n,m))
-    return answer;
+    return answer=[gcd(n,m),n*m/gcd(n,m)];
 }
