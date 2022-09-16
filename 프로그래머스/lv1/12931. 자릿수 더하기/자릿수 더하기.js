@@ -1,10 +1,8 @@
-function solution(n)
-{
-    var answer = 0;
-    let strNum = n.toString();
-    let sum = 0;
-    for(let i =0;i<strNum.length; i++){
-        sum += Number(strNum[i]);
+function solution(n){
+    let answer = 0;
+    let num = n.toString().split("");
+    for(let i = 0; i<num.length;i++){
+        answer+= +num[i];
     }
-    return answer=sum;
+    return answer;
 }
