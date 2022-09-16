@@ -1,6 +1,6 @@
 function solution(arr) {
     var answer = [];
-    if(arr.length ===1){return [-1];}
-    arr.splice(arr.indexOf(Math.min(...arr)),1);
-    return answer = arr;
+    arr.splice(arr.indexOf(Math.min(...arr)),1)
+    if(arr.length===0){return answer=[-1]}
+    return answer=arr;
 }
