@@ -1,19 +1,18 @@
 const input = require('fs').readFileSync('/dev/stdin').toString().split("\n");
-const lineOne = input[0].split(" ");
-const hap = lineOne[1];
+const line = input[0].split(" ").map(x => +x);
+const hap = line[1];
+let lineTwo = input[1].split(" ").map(x => +x);
+let maxint = 0;
 
-const card = input[1].split(" ").map(x => +x);
-card.sort((a, b) => a - b);
-let max = 0;
-
-for (let i = 0; i < card.length - 2; i++) {
-    for (let j = i + 1; j < card.length - 1; j++) {
-        for (let k = j + 1; k < card.length; k++) {
-            let sum = (card[i] + card[j] + card[k]);
-            if (sum <= hap && sum > max) {
-                max = sum;
+for (let i = 0; i < line[0] - 2; i++) {
+    for (let j = i + 1; j < line[0] - 1; j++) {
+        for (let k = j + 1; k < line[0]; k++) {
+            let sumNum = lineTwo[i] + lineTwo[j] + lineTwo[k];
+            if (sumNum > maxint && sumNum <= hap) {
+                maxint = sumNum;
             }
         }
     }
 }
-console.log(max);
+
+console.log(maxint);
