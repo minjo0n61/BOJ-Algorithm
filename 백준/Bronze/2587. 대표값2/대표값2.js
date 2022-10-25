@@ -1,16 +1,6 @@
-const readline = require("readline");
-const rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout,
-});
-let input = [];
-rl.on("line", function (line) {
-	input.push(line.toString());
-}).on("close", function () {
-	input = input.map((el) => Number(el));
-    input.sort((a, b) => a - b);
-let sum = input.reduce((past, curr) => past + curr, 0);
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split("\n").map(Number);
+let sum = 0;
 
-console.log(sum / 5 + "\n" + input[2]);
-	process.exit();
-});
+sum = input.reduce((a, b) => (a + b), 0);
+input.sort((a, b) => a - b);
+console.log(parseInt(sum / 5) + "\n" + input[2]);
