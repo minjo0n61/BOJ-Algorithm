@@ -1,9 +1,7 @@
-const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
-
-const [N, A, M, B] = input.map(v => v.split(" "));
-
-const array = new Set(A);
-
-const result = B.map(v => array.has(v) ? 1 : 0);
-
-console.log(result.join("\n"));
+const input = require('fs').readFileSync("/dev/stdin").toString().trim().split("\n");
+const a = +input.shift();
+const groupNum = new Set(input.shift().split(" "));
+const b = +input.shift();
+const compareNum = input.shift().split(" ");
+const answer = compareNum.map(el => groupNum.has(el) ? 1 : 0);
+console.log(answer.join("\n"));
