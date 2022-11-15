@@ -1,18 +1,17 @@
-const input = require('fs').readFileSync('/dev/stdin').toString().split("\n");
-const line = input[0].split(" ").map(x => +x);
-const hap = line[1];
-let lineTwo = input[1].split(" ").map(x => +x);
-let maxint = 0;
+const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().trim().split("\n").map(el => el.split(" ").map(Number));
+const testcase = +input[0].shift();
+const hap = +input.shift();
+let sum = 0;
+let maxSum = 0;
 
-for (let i = 0; i < line[0] - 2; i++) {
-    for (let j = i + 1; j < line[0] - 1; j++) {
-        for (let k = j + 1; k < line[0]; k++) {
-            let sumNum = lineTwo[i] + lineTwo[j] + lineTwo[k];
-            if (sumNum > maxint && sumNum <= hap) {
-                maxint = sumNum;
+for (let i = 0; i < testcase - 2; i++) {
+    for (let j = i + 1; j < testcase - 1; j++) {
+        for (let k = j + 1; k < testcase; k++) {
+            sum = input[0][i] + input[0][j] + input[0][k];
+            if (sum <= hap && sum > maxSum) {
+                maxSum = sum;
             }
         }
     }
 }
-
-console.log(maxint);
+console.log(maxSum);
