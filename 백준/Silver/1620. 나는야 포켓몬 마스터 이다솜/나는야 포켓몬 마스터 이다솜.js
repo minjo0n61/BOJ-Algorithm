@@ -1,12 +1,15 @@
-const input = require("fs").readFileSync("/dev/stdin").toString().trim().split(/\s/);
-const n = +input[0];
-const m = +input[1];
-const arr = input.slice(2, n+2);
-const pokemonMap = new Map(arr.map((v, i) => [v, i+1]));
-const question = input.slice(n+2);
-const answer = [];
-question.forEach(v => {
-    if (Number.isNaN(+v)) answer.push(pokemonMap.get(v));
-    else answer.push(arr[+v-1]);
-});
+const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().replace(/(?:\r)/g, "").trim().split("\n");
+let [group, testcase] = input.shift().split(" ").map(Number);
+let doogam = input.slice(0, group);
+let question = input.slice(group);
+let answer = [];
+
+let doogamMap = new Map(doogam.map((value, key) => [value, key + 1]));
+question.forEach(el => {
+    if (isNaN(el)) {
+        answer.push(doogamMap.get(el));
+    } else {
+        answer.push(doogam[el - 1]);
+    }
+})
 console.log(answer.join("\n"));
