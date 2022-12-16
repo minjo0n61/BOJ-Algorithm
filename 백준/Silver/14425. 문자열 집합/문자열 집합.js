@@ -1,14 +1,12 @@
-const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().replace(/(?:\r)/g, '').split("\n");
-let [group, testCase] = input.shift().split(" ").map(Number);
-let s = [];
-let answer = 0;
-for (let i = 0; i < group; i++) {
-    s.push(input.shift());
-}
-s = new Set(s);
-for (let i = 0; i < testCase; i++) {
-    if (s.has(input[i])) {
-        answer++;
+const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().replace(/(?:\r)/g, "").trim().split("\n");
+let [nNum, mNum] = input.shift().split(" ").map(Number);
+let sGroup = input.slice(0, nNum);
+let test = input.slice(nNum);
+let answer = [];
+let sGroupSet = new Set(sGroup);
+test.forEach(el => {
+    if (sGroupSet.has(el)) {
+        answer.push(el);
     }
-}
-console.log(answer);
+});
+console.log(answer.length);
