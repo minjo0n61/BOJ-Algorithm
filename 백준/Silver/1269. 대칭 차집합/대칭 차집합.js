@@ -1,13 +1,13 @@
 const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().trim().split("\n").map(el => el.split(" ").map(Number));
-let [n, m] = input[0];
-let arrA = new Set(input[1]);
-let arrB = new Set(input[2]);
-let answer = new Set([...arrA, ...arrB]);
+let aGroup = input[1];
+let bGroup = input[2];
+let abSet = new Set([...aGroup, ...bGroup]);
+let aGroupSet = new Set(aGroup);
 
-arrA.forEach(el => {
-    if (arrB.has(el)) {
-        answer.delete(el);
+bGroup.forEach(el => {
+    if (aGroupSet.has(el)) {
+        abSet.delete(el);
     }
 })
 
-console.log(answer.size);
+console.log(abSet.size);
