@@ -1,26 +1,24 @@
-//S[i] = S[i-1] + A[i]
 const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().replace(/(?:\r)/g, "").trim().split("\n").map(el => el.split(" ").map(Number));
-const [N, M] = input.shift();
-let A = input.shift();
-let S = new Array(N);
+let [n, m] = input.shift();
+let arrA = input.shift();
+let S = new Array(n);
 let answer = [];
 
-for (let i = 0; i < N; i++) {
+for (let i = 0; i < n; i++) {
     if (i === 0) {
-        S[0] = A[0];
+        S[i] = arrA[i];
     } else {
-        S[i] = S[i - 1] + A[i];
+        S[i] = S[i - 1] + arrA[i];
     }
 }
 
-function sectionHap([num1, num2]) {
-    if (num1 === 1) {
-        return S[num2 - 1];
+for (let i = 0; i < m; i++) {
+    if (input[i][0] !== 1) {
+        answer.push(S[input[i][1] - 1] - S[input[i][0] - 2]);
+    } else {
+        answer.push(S[input[i][1] - 1]);
     }
-    return S[num2 - 1] - S[num1 - 2];
+
 }
 
-for (let i = 0; i < M; i++) {
-    answer.push(sectionHap(input[i]));
-}
 console.log(answer.join("\n"));
