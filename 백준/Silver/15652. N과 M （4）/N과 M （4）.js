@@ -1,19 +1,17 @@
-const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().trim().toString().trim().split(" ").map(Number);
+const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().trim().split(" ").map(Number);
 let [N, M] = input;
 let result = [];
-let cheak = new Array(N + 1).fill(0);
-let answer = '';
+let answer = [];
 
-function Backtracking(num, start) {
+function recur(num, start) {
     if (num === M) {
-        answer += `${result.join(" ")}\n`
-        return
+        return answer.push(`${result.join(" ")}`);
     }
     for (let i = start; i < N + 1; i++) {
         result.push(i);
-        Backtracking(num + 1, i);
+        recur(num + 1, i);
         result.pop();
     }
 }
-Backtracking(0, 1);
-console.log(answer.trim());
+recur(0, 1);
+console.log(answer.join("\n"));
