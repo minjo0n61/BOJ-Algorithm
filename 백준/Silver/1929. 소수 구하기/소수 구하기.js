@@ -1,5 +1,14 @@
-const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().split(" ").map(Number);
-let answer = [];
+const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().trim().split(" ").map(el => +el);
+
+let [m, n] = input;
+let result = [];
+
+for (let i = m; i <= n; i++) {
+    isPrime(i);
+}
+
+console.log(result.join("\n"));
+
 
 function isPrime(num) {
     if (num !== 1) {
@@ -8,12 +17,6 @@ function isPrime(num) {
                 return;
             }
         }
-        return answer.push(num);
+        return result.push(num);
     }
 }
-
-for (let i = input[0]; i <= input[1]; i++) {
-    isPrime(i);
-}
-
-console.log(answer.join("\n"));
