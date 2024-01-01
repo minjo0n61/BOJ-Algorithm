@@ -1,10 +1,8 @@
-const input = require('fs').readFileSync('/dev/stdin').toString().trim().split("\n");
-const time = input[0].split(" ");
-let origin_h = Number(time[0]);
-let origin_m = Number(time[1]);
-let cook_time = Number(input[1]);
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
+let time = input[0].split(" ").map(Number);
+let cooktime = Number(input[1]);
 
-let end_h = Math.trunc((origin_h * 60 + origin_m + cook_time) / 60);
-let end_m = (origin_h * 60 + origin_m + cook_time) % 60;
+let endhour = Math.floor((time[0] * 60 + time[1] + cooktime) / 60);
+let endminute = (time[0] * 60 + time[1] + cooktime) % 60;
 
-console.log(end_h % 24 + " " + end_m);
+console.log(endhour % 24 + " " + endminute);
