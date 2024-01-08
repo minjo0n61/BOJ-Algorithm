@@ -9,4 +9,4 @@ for (let i = 0; i < N; i++) {
     result.trim();
     result += "\n";
 }
-console.log(result.trim());
+console.log(result);
