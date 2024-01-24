@@ -1,7 +1,4 @@
-const { resourceUsage } = require('process');
-
-const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().trim().split(" ").map(Number);
-let [N, M] = input;
+const [N,M] = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().trim().split(" ").map(Number);
 let result = [];
 let answer = [];
 let cheak = new Array(N + 1).fill(0);
