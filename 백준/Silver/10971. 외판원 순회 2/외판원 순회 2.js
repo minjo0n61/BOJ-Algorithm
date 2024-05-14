@@ -1,36 +1,34 @@
-const input = require('fs')
+const input = require("fs")
   .readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt")
   .toString()
   .trim()
   .split("\n")
-  .map(el => el.split(" ").map(Number));
+  .map((el) => el.split(" ").map(Number));
 
-const N = input.shift()[0];
-const costs = input;
+const N = input[0][0];
+const graph = input.slice(1);
 
-const visited = Array(N).fill(false);
 let minCost = Infinity;
-const stack = [];
+const visited = Array(N).fill(false);
 
-function tsp(current, count, cost) {
-  if (count === N && costs[current][0] > 0) {
-    minCost = Math.min(minCost, cost + costs[current][0]);
+function dfs(node, count, cost) {
+  if (count === N) {
+    if (graph[node][0]) {
+      minCost = Math.min(minCost, cost + graph[node][0]);
+    }
     return;
   }
 
-  for (let i = 1; i < N; i++) {
-    if (!visited[i] && costs[current][i] > 0) {
+  for (let i = 0; i < N; i++) {
+    if (!visited[i] && graph[node][i]) {
       visited[i] = true;
-      stack.push(i);
-      tsp(i, count + 1, cost + costs[current][i]);
+      dfs(i, count + 1, cost + graph[node][i]);
       visited[i] = false;
-      stack.pop();
     }
   }
 }
 
 visited[0] = true;
-stack.push(0);
-tsp(0, 1, 0);
+dfs(0, 1, 0);
 
 console.log(minCost);
